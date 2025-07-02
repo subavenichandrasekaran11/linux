@@ -1,0 +1,63 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+//writing operation
+char buffer[100];
+FILE *f1;
+f1=fopen("write.txt","w");
+if(f1==NULL){
+perror("Nothing will be written in the file\n");
+return 1;
+}
+fprintf(f1,"hii helloworld\n");
+fclose(f1);
+//reading operation
+f1=fopen("write.txt","r");
+if(f1==NULL){
+perror("This file cannot be read\n");
+return 1;
+}
+while((fgets(buffer,sizeof(buffer),f1))!=NULL){
+printf("%s",buffer);
+}
+fclose(f1);
+//append operation
+f1=fopen("write.txt","a");
+if(f1==NULL){
+perror("error\n");
+return 1;
+}
+fprintf(f1,"This will be appended\n");
+fclose(f1);
+// after append
+f1=fopen("write.txt","r");
+if(f1==NULL){
+perror("This file cannot be read\n");
+return 1;
+}
+while((fgets(buffer,sizeof(buffer),f1))!=NULL){
+printf("%s",buffer);
+}
+fclose(f1);
+//rename operation
+if(rename("write.txt","read.txt")==0){
+printf("successfully\n");
+}
+else{
+printf("not succesfully renamed\n");
+}
+//remove operation
+if(remove("read.txt")==0){
+printf("removed\n");
+}
+else
+{
+printf("not removed\n");
+}
+}
+
+
+
+
+
