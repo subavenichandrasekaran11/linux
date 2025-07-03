@@ -30,4 +30,9 @@ int main(){
 
 
 
-\*output
+/*output
+entering...thread id:1
+leaving...thread id:1
+entering...thread id:2
+leaving...thread id:2
+*/
